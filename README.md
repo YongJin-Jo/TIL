@@ -1,2 +1,3 @@
-"# TIL"  git init git add README.md git commit -m "first commit" git branch -M main git remote add origin https://github.com/YongJin-Jo/TIL.git git push -u origin main
-"# TIL" 
+# Today I Learned
+
+오늘 공부한 것을 기억하기 위해 작성 합니다.
