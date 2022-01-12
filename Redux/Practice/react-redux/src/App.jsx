@@ -1,8 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import HomeView from './view/HomeView';
-import { TodoDetailView } from './view/TodoDetailView';
+import TodoDetailView from './view/TodoDetailView';
 
 function App() {
+  
+
   return (
     <div className="App">
       <Routes>
