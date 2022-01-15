@@ -1,13 +1,11 @@
 import {useState} from 'react'
-import {connect} from 'react-redux'
-import { useParams } from 'react-router-dom';
+import {useDispatch,useSelector} from 'react-redux'
 import { TodoList } from '../components/TodoList';
 import {add} from '../store/store'
-function Home({ toDos, addToDo }) {
+export default function Home() {
     const [text, setText] = useState("");
-
-    const { productId } = useParams();
-		console.log(productId);
+    const toDos = useSelector(state => state)
+    const dispatch = useDispatch()
 
     function onChange(e) {
       setText(e.target.value);
@@ -15,7 +13,7 @@ function Home({ toDos, addToDo }) {
 
     function onSubmit(e) {
       e.preventDefault();
-      addToDo(text);
+      dispatch(add(text))
       setText("");
     }
 
@@ -29,29 +27,11 @@ function Home({ toDos, addToDo }) {
         <ul>
           {toDos.map(toDo =>  (
           <TodoList 
-          {...toDo} 
+          {...toDo}
           key={toDo.id} 
-          productId={productId} />
+          />
         ))}
         </ul>
       </>
     );
   }
-  
-  function mapStateToProps(state) {
-    return { toDos: state };
-  }
-  
-  //function mapDispatchToProps(dispatch) {
-  //  return {
-  //    addToDo: text => dispatch(add(text))
-  //  };
-  //}
-
-    function mapDispatchToProps(dispatch){
-      return{
-        addToDo: text =>(dispatch(add(text)))
-      }
-    }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(Home);
